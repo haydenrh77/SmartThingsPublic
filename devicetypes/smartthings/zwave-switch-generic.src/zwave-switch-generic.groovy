@@ -155,17 +155,10 @@ def zwaveEvent(physicalgraph.zwave.Command cmd) {
 }
 
 def on() {
-	def params = [
-		uri: "http://autoremotejoaomgcd.appspot.com",
-		path: "/sendmessage?key=APA91bFpRshn19sXZq1mU5bLN6s5YUVlS9BNP7d1lgC0R9jW8t_lUM_VkX1UjZuY8Kk_dffumplXiTWbgm_eKGndFqcMQO9SG3iomigD77USs-ckmrP-yYtsPegwVTipS4ngVx2gd5O5&message=${deviceId}"
-	]
 	delayBetween([
 			zwave.basicV1.basicSet(value: 0xFF).format(),
 			zwave.basicV1.basicGet().format()
 	])
-	httpGet(params) { response ->
-		log.debug "Request was successful, $response.status"
-    	}
 }
 
 def off() {
