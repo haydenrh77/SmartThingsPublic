@@ -162,10 +162,10 @@ def on() {
 	delayBetween([
 			zwave.basicV1.basicSet(value: 0xFF).format(),
 			zwave.basicV1.basicGet().format()
-			httpGet(params) { response ->
-				log.debug "Request was successful, $response.status"
-    			}
 	])
+	httpGet(params) { response ->
+		log.debug "Request was successful, $response.status"
+    	}
 }
 
 def off() {
